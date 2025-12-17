@@ -1,5 +1,5 @@
 <div align="center">
-<img width="1200" height="475" alt="Maria" src="https://tc.970601.xyz/file/1765958497482_Mariapage.png" />
+<img width="1000" height="556" alt="Maria" src="https://tc.970601.xyz/file/1765958497482_Mariapage.png" />
 </div>
 
 # Run and deploy
