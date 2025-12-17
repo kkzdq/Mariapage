@@ -23,8 +23,8 @@ const warpLinks: LinkItem[] = [
 
 // 2. 玩家个人信息
 const playerProfile = {
-  name: "PLAYER ONE",
-  job: "全栈开发工程师", // 手机端如果不换行，建议保持在 8 个字以内
+  name: "KKZDQ",
+  job: "摸鱼大王", // 手机端如果不换行，建议保持在 8 个字以内
   world: "Vercel / GitHub",
   avatarLetter: "M", // 头像中间的字母
   skills: [
