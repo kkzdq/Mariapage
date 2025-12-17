@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>WORLD 1-1 // 个人导航站</title>
+    <!-- Tailwind CSS (保持CDN以便快速生效，也可以配置为PostCSS) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 引入 'Press Start 2P' (英数) 和 'ZCOOL KuaiLe' (中文字体，卡通风格) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+
+    <style>
+      :root {
+        --mario-sky: #6185F8;
+        --mario-ground: #E75A10;
+        --nes-border-width: 4px; /* 默认桌面端边框宽度 */
+      }
+      
+      /* 手机端调整为更细的像素边框，节省空间 */
+      @media (max-width: 640px) {
+        :root {
+          --nes-border-width: 2px;
+        }
+      }
+
+      body {
+        background-color: var(--mario-sky);
+        margin: 0;
+        overflow-x: hidden;
+        /* 字体栈优先使用像素英文，然后是卡通中文，最后是系统字体 */
+        font-family: 'Press Start 2P', 'ZCOOL KuaiLe', 'Microsoft YaHei', cursive, sans-serif;
+        -webkit-font-smoothing: none; /* 保持像素字体的锐利 */
+      }
+
+      /* NES 风格边框 (响应式) */
+      .nes-container {
+        position: relative;
+        background: white;
+        border-style: solid;
+        border-width: var(--nes-border-width);
+        border-color: black;
+        /* 动态计算阴影大小以匹配边框 */
+        box-shadow: 
+          calc(var(--nes-border-width) * -1) 0 0 0 black, 
+          var(--nes-border-width) 0 0 0 black, 
+          0 calc(var(--nes-border-width) * -1) 0 0 black, 
+          0 var(--nes-border-width) 0 0 black; 
+        margin: var(--nes-border-width);
+      }
+
+      .nes-btn {
+        border: var(--nes-border-width) solid black;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        transition: transform 0.1s;
+        /* 防止移动端点击高亮背景 */
+        -webkit-tap-highlight-color: transparent; 
+        user-select: none;
+      }
+      .nes-btn:active {
+        transform: translateY(var(--nes-border-width));
+      }
+
+      /* 像素云朵 */
+      .pixel-cloud {
+        width: 100px;
+        height: 24px;
+        background: #fff;
+        position: absolute;
+        box-shadow: 
+          24px -24px 0 0 #fff, 
+          48px 0 0 0 #fff, 
+          24px 24px 0 0 #fff,
+          0 0 0 4px rgba(0,0,0,0.1);
+        opacity: 0.8;
+        z-index: 0;
+        animation: floatCloud linear infinite;
+      }
+
+      @keyframes floatCloud {
+        from { transform: translateX(100vw); }
+        to { transform: translateX(-200px); }
+      }
+
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--mario-sky); 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--mario-ground); 
+        border: 2px solid black;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "vite": "https://aistudiocdn.com/vite@^7.2.7",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.2"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <!-- 关键修改：添加 Vite 入口脚本 -->
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
